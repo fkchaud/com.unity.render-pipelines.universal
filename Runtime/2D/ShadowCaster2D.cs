@@ -35,6 +35,7 @@ namespace UnityEngine.Experimental.Rendering.Universal
         int m_PreviousShadowGroup = 0;
         bool m_PreviousCastsShadows = true;
         int m_PreviousPathHash = 0;
+
         Renderer m_Renderer;
 
 
@@ -89,9 +90,9 @@ namespace UnityEngine.Experimental.Rendering.Universal
                 m_ApplyToSortingLayers = SetDefaultSortingLayers();
 
             Bounds bounds = new Bounds(transform.position, Vector3.one);
-
+            
             m_Renderer = GetComponent<Renderer>();
-            m_HasRenderer = renderer != null;
+            m_HasRenderer = m_Renderer != null;
             if (m_HasRenderer)
             {
                 bounds = m_Renderer.bounds;
@@ -166,13 +167,5 @@ namespace UnityEngine.Experimental.Rendering.Universal
                     ShadowCasterGroup2DManager.RemoveGroup(this);
             }
         }
-
-#if UNITY_EDITOR
-        void Reset()
-        {
-            Awake();
-            OnEnable();
-        }
-#endif
     }
 }

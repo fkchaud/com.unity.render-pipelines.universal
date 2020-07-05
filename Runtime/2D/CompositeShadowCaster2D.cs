@@ -12,7 +12,7 @@ namespace UnityEngine.Experimental.Rendering.Universal
     {
         public static Dictionary<Transform, CompositeShadowCaster2D> CompositeShadowCaster2DsByTransform =
             new Dictionary<Transform, CompositeShadowCaster2D>();
-
+        
         protected void OnEnable()
         {
             ShadowCasterGroup2DManager.AddGroup(this);
