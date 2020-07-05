@@ -36,8 +36,6 @@ namespace UnityEngine.Experimental.Rendering.Universal
         bool m_PreviousCastsShadows = true;
         int m_PreviousPathHash = 0;
 
-        Renderer m_Renderer;
-
 
         /// <summary>
         /// If selfShadows is true, useRendererSilhoutte specifies that the renderer's sihouette should be considered part of the shadow. If selfShadows is false, useRendererSilhoutte specifies that the renderer's sihouette should be excluded from the shadow
@@ -91,11 +89,10 @@ namespace UnityEngine.Experimental.Rendering.Universal
 
             Bounds bounds = new Bounds(transform.position, Vector3.one);
             
-            m_Renderer = GetComponent<Renderer>();
-            m_HasRenderer = m_Renderer != null;
-            if (m_HasRenderer)
+            Renderer renderer = GetComponent<Renderer>();
+            if (renderer != null)
             {
-                bounds = m_Renderer.bounds;
+                bounds = renderer.bounds;
             }
             else
             {
@@ -137,6 +134,9 @@ namespace UnityEngine.Experimental.Rendering.Universal
 
         public void Update()
         {
+            Renderer renderer = GetComponent<Renderer>();
+            m_HasRenderer = renderer != null;
+
             bool rebuildMesh = LightUtility.CheckForChange(m_ShapePathHash, ref m_PreviousPathHash);
             if (rebuildMesh)
                 ShadowUtility.GenerateShadowMesh(m_Mesh, m_ShapePath);
