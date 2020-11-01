@@ -621,7 +621,7 @@ namespace UnityEditor.Experimental.Rendering.Universal
 
                 EditorGUILayout.Slider(m_ShadowIntensity, 0, 1, Styles.generalShadowIntensity);
                 if(m_VolumetricAlpha.floatValue > 0)
-                    EditorGUILayout.Slider(m_ShadowVolumeIntensity, 0, 1, Styles.generalShadowVolumeIntensity);
+                    EditorGUILayout.Slider(m_ShadowVolumeIntensity, 0, 200, Styles.generalShadowVolumeIntensity);
             }
 
             m_SortingLayerDropDown.OnTargetSortingLayers(serializedObject, targets, Styles.generalSortingLayerPrefixLabel, AnalyticsTrackChanges);

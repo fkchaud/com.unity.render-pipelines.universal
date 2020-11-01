@@ -171,7 +171,7 @@ namespace UnityEngine.Experimental.Rendering.Universal
 
         [Range(0,1)]
         [SerializeField] float m_ShadowIntensity    = 0.0f;
-        [Range(0,1)]
+        [Range(0,200)]
         [SerializeField] float m_ShadowVolumeIntensity = 0.0f;
 
         internal struct LightStats
